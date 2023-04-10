@@ -1,0 +1,25 @@
+.singleClient {
+    padding: 0 40px 0 20px;
+}
+
+.singleClient .infoBox {
+    margin-bottom: 20px;
+}
+
+.editbtn, .deletebtn {
+    font-size: 16px;
+    color: #747474;
+    transition: all .2s ease;
+}
+
+.editbtn:hover {
+    color: #003472;
+} 
+
+.deletebtn:hover {
+    color: #870101;
+}
+
+button, a {
+    cursor: pointer;
+}
