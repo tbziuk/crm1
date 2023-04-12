@@ -3,14 +3,13 @@ const router = express.Router();
 
 const ClientsApiController = require('../controllers/ClientsApiController');
 
-
 const authHelper = require("../middlewares/authApiHelper");
 
 router.get('/', authHelper, ClientsApiController.index);
-router.get('/:id', ClientsApiController.oneClient);
+router.get('/:id', authHelper, ClientsApiController.oneClient);
 
-router.post('/', ClientsApiController.addClient);
-router.put('/:id', ClientsApiController.edit);
-router.delete('/:id', ClientsApiController.delete);
+router.post('/', authHelper, ClientsApiController.addClient);
+router.put('/:id', authHelper, ClientsApiController.edit);
+router.delete('/:id', authHelper, ClientsApiController.delete);
 
 module.exports = router;

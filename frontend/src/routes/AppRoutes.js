@@ -11,10 +11,10 @@ const AppRoutes = (props) => {
 
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/add/*" element={<Main errors={errors} setErrors={setErrors} />} />
-            <Route path="/signup/" element={<SignUp errors={errors} setErrors={setErrors}  />} />
-            <Route path="/login/" element={<Login errors={errors} setErrors={setErrors}  />} />
+            <Route path="/" element={<Home token={props.token} />} />
+            <Route path="/add/*" element={<Main token={props.token} errors={errors} setErrors={setErrors} />} />
+            <Route path="/signup/" element={<SignUp token={props.token} errors={errors} setErrors={setErrors}  />} />
+            <Route path="/login/" element={<Login setToken={props.setToken} errors={errors} setErrors={setErrors}  />} />
         </Routes>
     )
 }

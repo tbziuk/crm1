@@ -15,7 +15,7 @@ const User = new mongoose.Schema(
 
 
 User.methods.generateAuthToken = (user) => {
-  const token = jwt.sign({ _id: user._id }, 'authpick', { expiresIn: '1h' });
+  const token = jwt.sign({ _id: user._id }, 'authpick');
   return token;
 };
 

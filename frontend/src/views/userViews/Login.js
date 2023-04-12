@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const SignUp = (props) => {
+
+    const navigate = useNavigate()
 
     const logIn = (e) => {
         e.preventDefault();
@@ -11,7 +14,6 @@ const SignUp = (props) => {
         const password = e.target.password.value;
 
         const newErrors = [];
-
         if (email === '') {
             newErrors.push('Email lub hasło nieprawidłowe');
         }
@@ -28,6 +30,8 @@ const SignUp = (props) => {
             })
                 .then((res) => {
                     localStorage.setItem('jwt', res.data.jwt)
+                    props.setToken(res.data.jwt)
+                    navigate('/')
                 })
         }
     }
@@ -48,7 +52,7 @@ const SignUp = (props) => {
                 <input type="email" name="email" id="email" />
                 <label htmlFor="password">Hasło</label>
                 <input type="password" name="password" id="password" />
-                <button type="submit" className="addBtn">Dodaj</button>
+                <button type="submit" className="addBtn">Zaloguj</button>
             </form>
 
         </div>

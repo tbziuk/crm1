@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import MainRoutes from "../routes/MainRoutes";
 import './Main.css';
 
@@ -18,10 +18,6 @@ const Main = (props) => {
             .then(res => setClients(res.data))
             .catch(err => console.error(err));
     }, []);
-
-    useEffect(() => {
-
-    }, [clients]);
 
     const addClient = (e) => {
         e.preventDefault();
@@ -83,6 +79,7 @@ const Main = (props) => {
 
     return (
         <div className="main">
+            {!props.token && <Navigate to='/login' />}
             <div className="divide">
                 <div id="shortClients">
                     <input placeholder="szukaj..." onChange={handleSearchText} value={searchText}></input>
@@ -96,7 +93,7 @@ const Main = (props) => {
                         })}
                     </ul>
                 </div>
-                <MainRoutes clients={clients} addClientMtd={addClient} errors={props.errors} />
+                <MainRoutes token={props.token} clients={clients} addClientMtd={addClient} errors={props.errors} />
             </div>
         </div>
     )
