@@ -9,12 +9,16 @@ const AppRoutes = (props) => {
 
     const [errors, setErrors] = useState([]);
 
+    const replaceEl = <Login setToken={props.setToken} errors={errors} setErrors={setErrors}  />;
+
     return (
         <Routes>
-            <Route path="/" element={<Home token={props.token} />} />
-            <Route path="/add/*" element={<Main token={props.token} errors={errors} setErrors={setErrors} />} />
-            <Route path="/signup/" element={<SignUp token={props.token} errors={errors} setErrors={setErrors}  />} />
-            <Route path="/login/" element={<Login setToken={props.setToken} errors={errors} setErrors={setErrors}  />} />
+            {<Route path="/customer/" element={props.token ? <Home token={props.token} /> : replaceEl} />} 
+            {<Route path="/customer/add/*" element={props.token ? <Main token={props.token} errors={errors} setErrors={setErrors} /> : replaceEl} />}            
+            {<Route path="/signup/" element={props.token ? <SignUp token={props.token} errors={errors} setErrors={setErrors}  /> : replaceEl} />} 
+
+            {!props.token && <Route path="/login/" element={<Login setToken={props.setToken} errors={errors} setErrors={setErrors}  />} />}
+            
         </Routes>
     )
 }

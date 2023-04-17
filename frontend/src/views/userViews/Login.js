@@ -31,7 +31,7 @@ const SignUp = (props) => {
                 .then((res) => {
                     localStorage.setItem('jwt', res.data.jwt)
                     props.setToken(res.data.jwt)
-                    navigate('/')
+                    navigate('/customer/')
                 })
         }
     }

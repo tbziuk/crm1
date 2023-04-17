@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MainRoutes from "../routes/MainRoutes";
 import './Main.css';
 
@@ -54,7 +54,7 @@ const Main = (props) => {
                 address,
                 nip
             })
-                .then(() => { navigate(`../`) })
+                .then(() => { navigate(`../customer/`) })
                 .catch(err => console.error(err));
         }
     }
@@ -79,7 +79,6 @@ const Main = (props) => {
 
     return (
         <div className="main">
-            {!props.token && <Navigate to='/login' />}
             <div className="divide">
                 <div id="shortClients">
                     <input placeholder="szukaj..." onChange={handleSearchText} value={searchText}></input>
@@ -87,7 +86,7 @@ const Main = (props) => {
                         {filteredClients.map((client) => {
                             return (
                                 <li className="clientShort" key={client._id}>
-                                    <a href={"/add/" + client._id}>{client.name}</a>
+                                    <a href={"/customer/add/" + client._id}>{client.name}</a>
                                 </li>
                             )
                         })}

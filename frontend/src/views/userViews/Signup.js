@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 
 const SignUp = (props) => {
@@ -59,7 +59,6 @@ const SignUp = (props) => {
     return (
         <div className="formAdd">
             <h2>Dodaj użytkownika</h2>
-            {!props.token && <Navigate to='/login'/>}
             <div className="errors" style={{ display: props.errors.length > 0 ? 'block' : 'none' }}>
                 <ul>
                     {props.errors.map((error, index) => (

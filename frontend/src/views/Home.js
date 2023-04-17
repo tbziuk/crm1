@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Client from "../components/Client";
 import "./Home.css";
-import { Navigate } from "react-router-dom";
 
 
 const Home = (props) => {
@@ -19,7 +18,6 @@ const Home = (props) => {
     return (
         <div className="home">
             <h1>Lista Klientów</h1>
-            {!props.token && <Navigate to='/login' />}
             <div className="clientsList">
                 <Client clients={clients}/>
             </div>

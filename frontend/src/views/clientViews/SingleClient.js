@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import './SingleClient.css';
 import Actions from '../../components/Actions';
 
@@ -42,19 +42,21 @@ const SingleClient = (props) => {
         if (shouldDelete) {
             try {
                 await axios.delete(`http://localhost:8001/client/${clientData._id}`);
-                navigate(`/`)
+                navigate(`/customer/`)
             } catch (err) {
                 console.error(err);
             }
         }
     };
-    
+
 
 
     return (
         <div className="singleClient">
             <div className="infoBox">
-                <h2>{clientData.name} <a className="editbtn" href={"/add/" + clientData._id + "/edit"}>⚙Edytuj</a> <a className="deletebtn" onClick={deleteClient}>🗑Usuń</a></h2>
+                <h2>{clientData.name}
+                    <Link className="editbtn" to={`/customer/add/${clientData._id}/edit`}>⚙Edytuj</Link>
+                    <button className="deletebtn" onClick={deleteClient}>🗑Usuń</button></h2>
                 <table className="actionTable">
                     <thead>
                         <tr>

@@ -33,7 +33,7 @@ const Actions = (props) => {
                 </tbody>
             </table>
 
-            <a id="addActionBtn" href={`http://localhost:3000/add/${props.clientData._id}/addAction`}>Dodaj akcję</a>
+            <a id="addActionBtn" href={`http://localhost:3000/customer/add/${props.clientData._id}/addAction`}>Dodaj akcję</a>
         </div>
 
     )

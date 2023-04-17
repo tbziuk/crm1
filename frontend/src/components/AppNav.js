@@ -9,20 +9,20 @@ const AppNav = (props) => {
         <nav className="mainNav">
             <ul>
                 <li id="logo">
-                    {props.token ? <Link to="/">📆CMR</Link> : <Link to="/login">📆CMR</Link>}
+                    {props.token ? <Link to="/customer/">📆CMR</Link> : <Link to="/login">📆CMR</Link>}
                 </li>
                 <li>
-                    {props.token && <Link to="/add">Dodaj Klienta</Link>}
+                    {props.token && <Link to="/customer/add">Dodaj Klienta</Link>}
                 </li>
                 <li>
                     {props.token && <Link to="/signup">Dodaj Użytkownika</Link>}
                 </li>
                 <li>
-                    {props.token && <a onClick={()=>{
+                    {props.token && <Link onClick={()=>{
                         localStorage.removeItem('jwt');
                         navigate('/login');
                         window.location.reload();
-                        }}>Wyloguj</a>}
+                        }}>Wyloguj</Link>}
                 </li>
             </ul>
         </nav>
